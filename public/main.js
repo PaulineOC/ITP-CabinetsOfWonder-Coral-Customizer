@@ -28,9 +28,12 @@ const hideAll = () => {
 	endDiv.classList.add("hidden");
 };
 
-onDOMContentLoaded = () => {
+window.addEventListener('DOMContentLoaded', () => {
+	console.log('DOM loaded');
 
-};
+	setupMQTT();
+
+});
 
 //MAIN
 const leftContainer = document.getElementById('left');
@@ -151,5 +154,12 @@ hideMobileKeyboardOnReturn(name);
 
 //Submit
 const submitContainer = document.getElementById('submit-container');
+const submit = document.getElementById('submit');
+
+submit.onclick = () => {
+	console.log("Submitting:");
+	sendMqttMessage();
+
+};
 
 

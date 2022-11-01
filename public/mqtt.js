@@ -8,11 +8,14 @@ function setupMQTT(){
   };
   // client credentials:
   let MQTTCreds = {
-      clientID: 'Coral-Community',
+      clientID: 'CoralCustomizer222',
       userName: 'itp-cow-coral',
       password: 'KfJGdpgNyNgxeDJX'
   }
-    //MQTT - Private:
+  //  password:'vMbhYA6zMYEGNmtc'
+  //  password: 'KfJGdpgNyNgxeDJX'
+  
+  //MQTT - Private:
 
   client = new Paho.MQTT.Client(MQTTBroker.hostname, Number(MQTTBroker.port), MQTTCreds.clientID);
     // set callback handlers for the client:
@@ -55,6 +58,9 @@ function sendMqttMessage() {
         message.destinationName = topic;
         // send it:
         client.send(message);
+    }
+    else{
+      console.log("Not connected");
     }
 }
 
