@@ -138,6 +138,17 @@ pinkButton.onclick = onColorClick.bind(this, 'PINK');
 const nameContainer = document.getElementById('name-container');
 const name = document.getElementById('nameInput');
 
+const hideMobileKeyboardOnReturn = (element) => {
+    element.addEventListener('keyup', (keyboardEvent) => {
+        const key = keyboardEvent.code || keyboardEvent.keyCode;
+        if (key === 'Enter' || key === 13) {
+            element.blur();
+        }
+    });
+};
+
+hideMobileKeyboardOnReturn(name);
+
 //Submit
 const submitContainer = document.getElementById('submit-container');
 
