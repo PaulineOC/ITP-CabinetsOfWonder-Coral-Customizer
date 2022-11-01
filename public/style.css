@@ -1,0 +1,170 @@
+html, body {
+  margin: 0;
+  padding: 0; 
+}
+
+body{
+    background: url("Assets/ocean.png") no-repeat fixed center;
+    background-size: cover;
+    height:  100vh;
+}
+
+main {
+  display:  flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: url("Assets/ocean.png") no-repeat fixed center;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+canvas {
+  display: block;
+}
+
+
+.hidden{
+  display: none !important;
+}
+
+.instructionalVideos{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100% !important;
+  min-height: 100% !important;
+}
+
+.container{
+  padding-bottom: 2%;
+}
+
+/*CUSTOMIZATION*/
+#CUSTOMIZATION{
+  background-color:  rgba(255,255,255,0.75);
+  display:  flex;
+  flex-direction:  row;
+  justify-content: space-around;
+  width: 95%;
+  margin-top: 10%;
+}
+
+#top{
+  width: 60%;
+}
+
+.splitContainers{
+  display:  flex;
+  flex-direction:  column;
+  justify-content: center;
+  align-items:  center;
+}
+
+#left{
+  width: 60%;
+}
+
+#right{
+  width:  40%;
+}
+
+/* OPTIONS */
+
+
+/* Coral  */
+.coralOptionContainer{
+  display: flex;
+  flex-direction:  column;
+}
+
+.coralButton{
+  margin: 4px 10px 4px 10px;
+  box-shadow: 6px 3px 6px gray;
+}
+
+.coralImg{
+  height:  60px;
+}
+
+
+#species-container{
+  display:  flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+#species-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction:  row;
+  justify-content:  space-evenly;
+}
+
+label {
+  margin-top: 4%;
+  text-align: center;
+}
+
+/* Color  */
+#color-container{
+  display:  flex;
+  flex-direction:  column;
+}
+
+#color-grid{
+  display:  grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns:  repeat(4, 1fr);
+  column-gap:  1rem;
+  row-gap:  1rem;
+}
+
+.color{
+  display:block;
+  padding: 32px 21px;
+  border-radius: 100%;
+
+  vertical-align: top;
+  margin: 4px 10px 4px 10px;
+  box-shadow: 6px 3px 6px gray;
+}
+
+.color:active {
+  margin: 6px 10px 2px 10px;
+  box-shadow:  0 0 0 white;
+}
+
+.selected{
+  box-shadow: 0 0 0 white;
+  margin: 6px 10px 2px 10px;
+}
+
+/* NAME */
+#name-container{
+  display: flex;
+  flex-direction:  column;
+}
+
+#nameInput{
+  margin-top: 4%;
+  font-size: large;
+}
+
+
+
+
+
+
+/* SUBMIT  */
+#submit{}
+
+
+/*End*/
+
+
+
