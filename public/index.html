@@ -70,11 +70,12 @@
             </div></div>
           <div id="name-container" class="container hidden">
             <label for="nameInput">Name (Max 12 characters):</label>
+            <label id="inputError" class="hidden">Name is required</label>
             <input type="text" id="nameInput" name="name" required minlength="1" maxlength="12" size="12">
           </div>
 
           <div id="submit-container" class="container hidden">
-            <button id="submit">Finish</button>
+            <button type=submit id="submit" ty>Finish</button>
           </div>
         </div>
 
@@ -90,8 +91,8 @@
         [Resetting button] </div>
 
     </main>
-
     <script src="constants.js"></script>    
     <script src="mqtt.js"></script>
+    <script src="customize.js"></script>    
     <script src="main.js"></script>
 </body></html>

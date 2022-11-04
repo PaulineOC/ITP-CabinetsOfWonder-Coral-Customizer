@@ -3,23 +3,22 @@
 function setupMQTT(){
   // MQTT client details:
   let MQTTBroker = {
-      hostname: `itp-cow-coral.cloud.shiftr.io/mqtt`,
-      port: `1883`
+      hostname: `itp-cow-coral.cloud.shiftr.io`,
+      port: `443`
   };
   // client credentials:
   let MQTTCreds = {
-      clientID: 'CoralCustomizer222',
+      clientID: 'CoralCustomizer-v2',
       userName: 'itp-cow-coral',
       password: 'KfJGdpgNyNgxeDJX'
   }
-  //  password:'vMbhYA6zMYEGNmtc'
-  //  password: 'KfJGdpgNyNgxeDJX'
-  
+
   //MQTT - Private:
 
   client = new Paho.MQTT.Client(MQTTBroker.hostname, Number(MQTTBroker.port), MQTTCreds.clientID);
     // set callback handlers for the client:
-    client.onConnectionLost = () => {
+    client.onConnectionLost = (e) => {
+      console.log(e.errorMessage);
       console.log("lost connection");
     };
     client.onMessageArrived = onMQTTMessageArrive;
@@ -28,8 +27,7 @@ function setupMQTT(){
         {
             onSuccess: () => {
             console.log("Connected to MQTT Broker");  
-              client.subscribe(topic);
-              client.subscribe(topic2);
+              client.subscribe(`/${MQTT_TOPICS['CUSTOMIZER']}`);
             },       // callback function for when you connect
             userName: MQTTCreds.userName,   // username
             password: MQTTCreds.password,   // password
@@ -38,29 +36,28 @@ function setupMQTT(){
     );
 }
 
-function sendMqttMessage() {
+function sendMqttMessage(data) {
     // if the client is connected to the MQTT broker:
     if (client.isConnected()) {
-        const finalData = {
-          coralType: selectedCoral,
-          name: selectedName,
-          red: selectedColor.red.toString(),
-          green: selectedColor.green.toString(),
-          blue: selectedColor.blue.toString(),
-          state: "CORAL_CUSTOMIZER",
-        };
 
-        console.log(finalData);
-        const finalDataString = JSON.stringify(finalData);
+        const formattedData = {
+          ...data,
+          state: MQTT_TOPICS['CUSTOMIZER']
+        };
+        console.log(formattedData);
+
+        const finalDataString = JSON.stringify(formattedData);
         // start an MQTT message:
         message = new Paho.MQTT.Message(finalDataString);
         // choose the destination topic:
-        message.destinationName = topic;
+        message.destinationName = MQTT_TOPICS['CUSTOMIZER'];
         // send it:
         client.send(message);
+        return true;
     }
     else{
       console.log("Not connected");
+      return false;
     }
 }
 
