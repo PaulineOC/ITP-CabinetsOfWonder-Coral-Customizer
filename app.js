@@ -10,8 +10,8 @@ var publicPath = path.join(__dirname, 'public')
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const server = app.listen(3002, () => {
-	console.log("listening on port 3002!");
+const server = app.listen(3000, () => {
+	console.log("listening on port 3000!");
 });
 
 
