@@ -193,8 +193,8 @@ const onSubmitClick = (endCb) => {
 		submit.disabled = true;
 
 		console.log("Name is valid - SUBMITTING");
-		userCoral.name = name.value.trim();
-		sendMqttMessage(userCoral);
+		userCoral.name = nameInput.value.trim();
+ 		sendMqttMessage(userCoral);
 
 		endCb();
 	}
