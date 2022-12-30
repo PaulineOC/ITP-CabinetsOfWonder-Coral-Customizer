@@ -7,6 +7,7 @@
 
     <script language="javascript" type="text/javascript" src="p5.serialport.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="customize.css">
     <meta charset="utf-8">
     <title>Coral Customizer</title>
   </head>
@@ -15,14 +16,18 @@
 
       <div id="START">
         <h1>Welcome to the Coral Customizer</h1>
-        <h3>Personalize your own coral</h3>
-        <p>[brief intro text]</p>
+        <h3>Let's personalize your own coral</h3>
+        <p>Bring your coral around to activate the different interactives</p>
         <button id="start-btn">Begin</button>
       </div>
 
       <div id="CUSTOMIZATION" class="hidden">
 
-        <div id="top">
+
+        
+
+
+        <div id="left" class="splitContainers">
 
           <div id="species-container" class="container">
 
@@ -53,42 +58,60 @@
             </div>
           </div>
 
-        </div>
-
-        <div id="left" class="splitContainers hidden">
-          <div id="color-container" class="container">
+          <div id="color-container" class="container hidden">
             <label for="color-grid">Choose its color</label>
             <div id ="color-grid">
-              <button id="RED" class="color" style="background-color: #FF0000;">Red</button>
-              <button id="ORANGE" class="color" style="background-color: #FF7A00">Orange</button>
-              <button id="YELLOW" class="color" style="background-color: #FFFF00">Yellow</button>
-              <button id="GREEN" class="color" style="background-color: #00FF00">Green</button>
-              <button id="CYAN" class="color" style="background-color: #00FFFF">Cyan</button>
-              <button id="BLUE" class="color" style="background-color: #0000FF">Blue</button>
-              <button id="PURPLE" class="color" style="background-color: #9400D3">Purple</button>
-              <button id="PINK" class="color selected" style="background-color:  #FF00FF">Pink</button>
-            </div></div>
+              <button id="RED" class="color" style="background-color: #FF0000;"></button>
+              <button id="ORANGE" class="color" style="background-color: #FF7A00"></button>
+              <button id="YELLOW" class="color" style="background-color: #FFFF00"></button>
+              <button id="GREEN" class="color" style="background-color: #00FF00"></button>
+              <button id="CYAN" class="color" style="background-color: #00FFFF"></button>
+              <button id="BLUE" class="color" style="background-color: #0000FF"></button>
+              <button id="PURPLE" class="color" style="background-color: #9400D3"></button>
+              <button id="PINK" class="color selected" style="background-color:  #FF00FF"></button>
+            </div>
+          </div>
+          
           <div id="name-container" class="container hidden">
-            <label for="nameInput">Name (Max 12 characters):</label>
-            <label id="inputError" class="hidden">Name is required</label>
-            <input type="text" id="nameInput" name="name" required minlength="1" maxlength="12" size="12">
+            <label for="nameInput">Name</label>
+            <!-- <label id="inputError" class="hidden">Name is required</label> -->
+            <input type="text" id="nameInput" name="name" required minlength="1" maxlength="10" size="10">
+          </div>
+
+          
+        </div>
+
+        <div id="right" class="splitContainers">
+
+          <div id="coralResponse" class="hidden">
+            hi
+          </div>
+
+          <div id="coralPreviewContainer">
+             <img src="Assets/T2-FS.png"  class = "coralPreview invisible" id ="FUNGIA_SCUTARIA"/>
+             <img src="Assets/T2-AM.png" class = "coralPreview hidden" id ="ACROPORA_LORIPES"/>
+             <img src="Assets/T2-AL.png" class = "coralPreview hidden" id ="ACROPORA_MILLEPORA"/>
           </div>
 
           <div id="submit-container" class="container hidden">
-            <button type=submit id="submit" ty>Finish</button>
+            <button type=submit id="submit">Finish</button>
           </div>
-        </div>
+    
 
-        <div id="right" class="splitContainers hidden">
-          <img src="Assets/FS-Colored.png"  class = "coralImg hidden" id ="FUNGIA_SCUTARIA"/>
-          <img src="Assets/AL-Colored.png" class = "coralImg hidden" id ="ACROPORA_LORIPES"/>
-          <img src="Assets/AM-Colored.png" class = "coralImg hidden" id ="ACROPORA_MILLEPORA"/>
         </div>
       </div>
 
       <div id="END" class="hidden">
+
+        <p>
+
+          
+        <p>
+
+
         [resetting timer]
-        [Resetting button] </div>
+        [Resetting button]
+      </div>
 
     </main>
     <script src="constants.js"></script>    

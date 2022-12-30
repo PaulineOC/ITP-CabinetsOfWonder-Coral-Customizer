@@ -10,9 +10,10 @@ const userCoral = {
 const leftContainer = document.getElementById('left');
 const rightContainer = document.getElementById('right');
 
+const coralResponse = document.getElementById('coralResponse');
+
 
 //Species
-
 const coralContainer = document.getElementById('species-container');
 
 const FS = document.getElementById('FSButton');
@@ -34,19 +35,13 @@ const onSpeciesClick = (coral, e) => {
 		e.target.classList.add('selected');
 	}
 
-	let top = document.getElementById('top');
-	if(top){
-		leftContainer.insertBefore(coralContainer,leftContainer.firstChild);
-		leftContainer.classList.remove('hidden');
-		top.remove();
-		rightContainer.classList.remove('hidden');
-	}
-
 	hideAllCoralImgs();
 	const currImg = document.getElementById(userCoral.species);
 	currImg.classList.remove('hidden');
 
-
+	// Unhide color section
+	colorContainer.classList.remove('hidden');
+	coralResponse.classList.remove('hidden');
 };
 
 const unselectSpeciesButtons = () => {
@@ -56,6 +51,7 @@ const unselectSpeciesButtons = () => {
 };
 
 const hideAllCoralImgs = () => {
+	FSImg.classList.remove('invisible');
 	FSImg.classList.add('hidden');
 	ALImg.classList.add('hidden');
 	AMImg.classList.add('hidden');
@@ -67,6 +63,8 @@ AM.onclick = onSpeciesClick.bind(this, CORAL_SPECIES['ACROPORA_MILLEPORA']);
 
 
 // Colors
+const colorContainer = document.getElementById('color-container');
+
 const redButton = document.getElementById('RED');
 const orangeButton = document.getElementById('ORANGE');
 const yellowButton = document.getElementById('YELLOW');
@@ -83,7 +81,29 @@ const onColorClick = (color, e) => {
 
 	nameContainer.classList.remove('hidden');
 	submitContainer.classList.remove('hidden');
+
+	const coralPrevImgsContainer = document.getElementById('coralPreviewContainer');
+
+	const coralPrevImgs = coralPrevImgsContainer.children.forEach((coral)=>{
+		removeColorsClasses(coral);
+		console.log();
+		coral.classList.add(COLORS[color]);
+	});
 };
+
+
+const removeColorsClasses = (element) => {
+	element.classList.remove('RED');
+	element.classList.remove('ORANGE');
+	element.classList.remove('YELLOW');
+	element.classList.remove('GREEN');
+	element.classList.remove('CYAN');
+	element.classList.remove('BLUE');
+	element.classList.remove('PINK');
+	element.classList.remove('PURPLE');
+};
+
+
 
 const unselectColorButtons = () => {
 	redButton.classList.remove('selected');
@@ -135,7 +155,6 @@ name.addEventListener('input', (e) => {
 	}
 });
 
-
 //Submit
 const submitContainer = document.getElementById('submit-container');
 const submit = document.getElementById('submit');
@@ -150,7 +169,6 @@ const onSubmitClick = (endCb) => {
 		userCoral.name = name.value;
 		sendMqttMessage(userCoral);
 		endCb();
-		
 	}
 	else{
 		console.log("Empty name input");
@@ -161,3 +179,4 @@ const onSubmitClick = (endCb) => {
 
 
 //RESET
+

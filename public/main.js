@@ -5,8 +5,6 @@ const endDiv = document.getElementById("END");
 const mainContainer = document.getElementById('mainContainer');
 
 
-
-
 //START
 const start = document.getElementById("start-btn");
 start.onclick = () => {
@@ -22,11 +20,13 @@ const hideAll = () => {
 };
 
 
+
+const endingContainer = document.getElementById('END');
 const endTransition = () => {
 	//Reset customize.js
 	console.log('Vending:');
 	hideAll();
-
+	endingContainer.classList.remove('hidden');
 };
 
 
@@ -40,6 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	console.log('DOM loaded');
 	setupMQTT();
 });
+
+
 
 
 
