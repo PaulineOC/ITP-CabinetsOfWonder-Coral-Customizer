@@ -27,8 +27,10 @@ function setupMQTT(){
         {
             onSuccess: () => {
             console.log("Connected to MQTT Broker");  
+              client.subscribe(`/${MQTT_TOPICS['PREVENT_TIMEOUT']}`);
               client.subscribe(`/${MQTT_TOPICS['CUSTOMIZER']}`);
-            },       // callback function for when you connect
+            },       
+            // callback function for when you connect
             userName: MQTTCreds.userName,   // username
             password: MQTTCreds.password,   // password
             useSSL: true                // use SSL
